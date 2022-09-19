@@ -41,20 +41,57 @@
 <body>
   <h3>Custom Element Test</h3>
 
-  <div class="disabled_overlay"></div>
+  <div class="disabled_overlay">
+    <p>Here is some text that can be shown/hidden</p>
+  </div>
   
-  <div id="label"></div><br/>
-  <div id="labelOutput3"></div>
+  <p>Output A</p>
+  <div id="labelA"></div>
 
-  <!-- Custom logic of the Custom element -->
+  <p>Output B</p>
+  <div id="labelB"></div>
+
+  <p>Output C</p>
+  <div id="labelC"></div>
+
+
+
+
+
+  <!-- Custom element logic -->
   <script>
     var isDisabled = false;
+
+    function setup(config) {
+
+        // Set static inline value
+        var output1 = "testing 123";
+        $("#labelA").text(value);
+
+        // JSON parameter value from custom element
+        //var output2 = config.capitaliseOutput;
+        // Content item's specified element
+
+        // Set based on existing element field
+        var output3 = getElementValue("heading");
+        $("#labelC").text(output3);
+
+        var value = output1 + " : " + output2 + " : " + output3;
+
+        
+        // Set the output value
+        CustomElement.setValue(value);
+    }
+
+
+
+
 
     function getElementValue(codename) {
       var elementValue = "not-set";
 
       CustomElement.getElementValue(codename, (value) => {
-        $("#labelOutput3").text(value);
+        $("#labelB").text(value);
         elementValue = value;
       });
 
@@ -71,22 +108,7 @@
       }
     }
 
-    function setup(config) {
-        // Static inline value
-        var output1 = "testing 123";
-        // JSON parameter value from custom element
-        var output2 = config.capitaliseOutput;
-        // Content item's specified element
-        var output3 = getElementValue("heading");
 
-        var value = output1 + " : " + output2 + " : " + output3;
-
-        // Display the output value
-        $("#label").text(value);
-
-        // Set the output value
-        CustomElement.setValue(value);
-    }
 
     function updateSize() {
         var height = 150;

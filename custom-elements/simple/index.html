@@ -76,14 +76,14 @@
         $("#labelA").text(output1);
 
         // JSON parameter value from custom element
-        var output2 = config.capitaliseOutput;
+        var output2 = config.capitaliseOutput + " - " + config.message;
         $("#labelB").text(output2);
 
         // Set based on existing element field
         getElementValue("heading");
         //$("#labelC").text(output3);
 
-        var value = output1 + " : " + output2 + " : " + $("#labelC").text();
+        var value = output1 + " : " + output2 + " : " + $("#labelC").Text;
         $("#labelD").text(value);
         
         // Set the output value

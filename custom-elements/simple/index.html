@@ -90,10 +90,6 @@
         CustomElement.setValue(value);
     }
 
-
-
-
-
     function getElementValue(codename) {
       var elementValue = "not-set";
 
@@ -105,16 +101,13 @@
     }
 
     function updateDisabled(disabled) {
-      isDisabled = disabled;
       if (disabled) {
-      $('.disabled_overlay').show();
+        $('.disabled_overlay').show();
       }
       else {
-      $('.disabled_overlay').hide();
+        $('.disabled_overlay').hide();
       }
     }
-
-
 
     function updateSize() {
         var height = 150;
@@ -132,17 +125,17 @@
             // Setup with initial value and disabled state
             setup(element.value);  
             setup(element.config);
-            //updateDisabled(element.disabled);
+            updateDisabled(element.disabled);
             updateSize();
           });
           // React when the disabled state changes (e.g. when publishing the item)
           CustomElement.onDisabledChanged(updateDisabled);
         } catch (err) {
-        // Initialization with the Custom elements API failed 
-        // (page displayed outside of the Kentico Cloud UI)
-        console.error(err);
-        updateDisabled(true);
-      }
+            // Initialization with the Custom elements API failed 
+            // (page displayed outside of the Kentico Cloud UI)
+            console.error(err);
+            updateDisabled(true);
+        }
     }
 
     initCustomElement();

@@ -110,8 +110,13 @@
             output3 = output2.toUpperCase();
             console.log("Processed text: " + output3);
         }
+        else
+        {
+            output3 = output2;
+            console.log("Text was not processed: " + output3);
+        }
 
-
+        CustomElement.setValue(output3);
 
         //console.log("Value at point 2: " + $("#element-value-holder").val());
         //console.log("Value at point 3: " + output2);

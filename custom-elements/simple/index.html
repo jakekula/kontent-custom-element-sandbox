@@ -52,7 +52,10 @@
     </tr>
     <tr>
         <td>Element value</td>
-        <td><span id="labelB"></span></td>
+        <td>
+            <span id="labelB"></span>
+            <input type="hidden" id="element-value-holder" />
+        </td>
     </tr>
   </table>
 
@@ -66,14 +69,15 @@
     function setup(config) {
 
         // JSON parameter value from custom element
-        var output2 = "JSON config settings passed in: <ul>" + "<li>" + config.capitaliseOutput + "</li><li>" + config.message + "</li>" + "</ul>";
-        $("#labelA").text(output2);
+        var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.message + "'";
+        $("#labelA").text(output1);
 
         // Set based on existing element field
         getElementValue("heading");
+        var output2 = $("#element-value-holder").val();
         
         // Set the output value
-        CustomElement.setValue(elementValue);
+        CustomElement.setValue(output2);
     }
 
 
@@ -82,6 +86,7 @@
       CustomElement.getElementValue(codename, (value) => {  
         elementValue = value;
         $("#labelB").text(elementValue);
+        $("#element-value-holder").text(elementValue);
       });
     }
 

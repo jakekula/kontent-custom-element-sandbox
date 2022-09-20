@@ -72,8 +72,9 @@
             CustomElement.setHeight(150);
 
             CustomElement.getElementValue(elementName, (value) => {
-                elementValueHolder.value = value;
-                setupElement();
+                console.log("Heading element value is: " + value);
+                elementValueHolder.value = value;                
+                setupElement(config, value);
             });
 
             CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
@@ -90,9 +91,9 @@
 
 
 
-    function setupElement() {
+    function setupElement(config, value) {
 
-        console.log("Element setup function");
+        console.log("Element setup function. Params passed in: " + config + ", " + value);
 
         // JSON parameter value from custom element
         //var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.message + "'";

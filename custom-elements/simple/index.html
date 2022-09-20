@@ -97,8 +97,7 @@
     function getElementValue(codename) {
       var elementValue = "not-set";
 
-      CustomElement.getElementValue(codename, (value) => {
-        $("#labelB").text(value);
+      CustomElement.getElementValue(codename, (value) => {        
         elementValue = value;
       });
 

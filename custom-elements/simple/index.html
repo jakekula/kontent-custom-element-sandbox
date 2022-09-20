@@ -94,8 +94,8 @@
       var elementValue = "not-set";
 
       CustomElement.getElementValue(codename, (value) => {  
-        console.log("Value is: " + value);      
-        elementValue = value;
+        console.log("Value is: " + value);
+        return value;
       });
 
       return "element value is: " + elementValue;

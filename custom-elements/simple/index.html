@@ -93,7 +93,7 @@
 
             console.log("Congig values passed in: '" + config.capitaliseOutput + "', '" + config.elementToProcess_Codename + "'");
 
-            CustomElement.setHeight(150);
+            CustomElement.setHeight(250);
 
             CustomElement.getElementValue(elementName, (value) => {
                 console.log("Heading element value is: " + value);
@@ -114,6 +114,9 @@
 
 
     function setupElement(config, value) {
+
+        // Current value as stored in the database - before processing
+        console.log("Currently set database value is: " + CustomElement.elementValue);
 
         console.log("Element setup function. Params passed in: " + config + ", " + value);
 
@@ -142,6 +145,9 @@
 
         // Set the value of this custom element
         CustomElement.setValue(output3);
+
+        //Newly saved value in the database - post processing
+        console.log("New database value is: " + output3);
     }
 
   </script>

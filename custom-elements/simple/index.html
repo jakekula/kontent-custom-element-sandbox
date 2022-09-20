@@ -45,17 +45,24 @@
     <p>Here is some text that can be shown/hidden</p>
   </div>
   
-  <p>Output A</p>
-  <div id="labelA"></div>
-
-  <p>Output B</p>
-  <div id="labelB"></div>
-
-  <p>Output C</p>
-  <div id="labelC"></div>
-
-
-
+  <table>
+    <tr>
+        <td>Output A</td>
+        <td><span id="labelA"></span></td>
+    </tr>
+    <tr>
+        <td>Output B</td>
+        <td><span id="labelB"></span></td>
+    </tr>
+    <tr>
+        <td>Output C</td>
+        <td><span id="labelC"></span></td>
+    </tr>
+    <tr>
+        <td>Output D</td>
+        <td><span id="labelD"></span></td>
+    </tr>
+  </table>
 
 
   <!-- Custom element logic -->
@@ -77,6 +84,7 @@
         $("#labelC").text(output3);
 
         var value = output1 + " : " + output2 + " : " + output3;
+        $("#labelD").text(value);
         
         // Set the output value
         CustomElement.setValue(value);

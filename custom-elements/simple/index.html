@@ -64,10 +64,21 @@
 
     $(document).ready(function () {
         CustomElement.init((element, _context) => {
-            config = element.config || {};
-            elementName = "heading";
 
-            console.log("Congig values passed in: '" + config.capitaliseOutput + "', '" + config.message + "'");
+            // Get the JSON config
+            // Example for this instance:
+            /*
+                {
+                    "capitaliseOutput": true,
+                    "elementToProcess_Codename": "heading"
+                }
+            */
+            config = element.config || {};
+
+            // Read the JSON config and get the codename of the element to get data from for processing
+            elementName = config.elementToProcess_Codename;
+
+            console.log("Congig values passed in: '" + config.capitaliseOutput + "', '" + config.elementToProcess_Codename + "'");
 
             CustomElement.setHeight(150);
 
@@ -96,7 +107,7 @@
         console.log("Element setup function. Params passed in: " + config + ", " + value);
 
         // JSON parameter value from custom element
-        var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.message + "'";
+        var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.elementToProcess_Codename + "'";
         $("#labelA").text(output1);
 
         // Set based on existing element field
@@ -116,26 +127,10 @@
             console.log("Text was not processed: " + output3);
         }
 
+        // Set the value of this custom element
         CustomElement.setValue(output3);
 
-        //console.log("Value at point 2: " + $("#element-value-holder").val());
-        //console.log("Value at point 3: " + output2);
-        
-        // Set the output value
-        //CustomElement.setValue(output2);
     }
-
-    function getElementValue(codename) {
-      CustomElement.getElementValue(codename, (value) => {  
-        elementValue = value;
-        $("#labelB").text(elementValue);
-        $("#element-value-holder").text(elementValue);
-
-        console.log("Value at point 1: " + elementValue);
-      });
-    }
-
-
 
   </script>
 </body>

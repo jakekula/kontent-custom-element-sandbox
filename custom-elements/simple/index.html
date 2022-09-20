@@ -80,7 +80,7 @@
             CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
                 CustomElement.getElementValue(elementName, (value) => {
                     elementValueHolder.value = value;
-                    setupElement();
+                    setupElement(config, value);
                 });
                 console.log("something changed")
                 console.log(changedElementCodenames[0])

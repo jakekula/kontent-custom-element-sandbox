@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +40,7 @@
   <h3>Custom Element Test</h3>
 
   <div class="disabled_overlay">
-    <p>Here is some text that can be shown/hidden</p>
+    <p>The element is currently disabled!</p>
   </div>
   
   <table>
@@ -54,7 +52,7 @@
         <td>Element value</td>
         <td>
             <span id="labelB"></span>
-            <input type="hidden" id="element-value-holder" />
+            <input type="hidden" id="elementValueHolder" />
         </td>
     </tr>
   </table>
@@ -62,11 +60,33 @@
 
   <!-- Custom element logic -->
   <script>
-    var isDisabled = false;
-
     var elementValue = "not set";
 
-    function setup(config) {
+    $(document).ready(function () {
+        CustomElement.init((element, _context) => {
+            config = element.config || {};
+            elementName = config.fieldname;
+
+            CustomElement.setHeight(150);
+            CustomElement.getElementValue(elementName, (value) => {
+                elementValueHolder.value = value
+                setupElement();
+            });
+            CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
+                CustomElement.getElementValue(elementName, (value) => {
+                    elementValueHolder.value = value
+                    setupElement();
+                });
+                console.log("something changed")
+                console.log(changedElementCodenames[0])
+            });
+
+        });            
+    });
+
+
+
+    function setupElement() {
 
         // JSON parameter value from custom element
         var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.message + "'";
@@ -83,57 +103,17 @@
         CustomElement.setValue(output2);
     }
 
-
-
     function getElementValue(codename) {
       CustomElement.getElementValue(codename, (value) => {  
         elementValue = value;
         $("#labelB").text(elementValue);
         $("#element-value-holder").text(elementValue);
-        
+
         console.log("Value at point 1: " + elementValue);
       });
     }
 
-    function updateDisabled(disabled) {
-      if (disabled) {
-        $('.disabled_overlay').show();
-      }
-      else {
-        $('.disabled_overlay').hide();
-      }
-    }
 
-    function updateSize() {
-        var height = 150;
-        try {
-          height = parseInt($("html").height());    
-        } catch (err) {
-          console.error(err);
-        }
-        CustomElement.setHeight(height);
-      }
-
-    function initCustomElement() {
-      try {
-          CustomElement.init((element, _context) => {
-            // Setup with initial value and disabled state
-            setup(element.value);  
-            setup(element.config);
-            updateDisabled(element.disabled);
-            updateSize();
-          });
-          // React when the disabled state changes (e.g. when publishing the item)
-          CustomElement.onDisabledChanged(updateDisabled);
-        } catch (err) {
-            // Initialization with the Custom elements API failed 
-            // (page displayed outside of the Kentico Cloud UI)
-            console.error(err);
-            updateDisabled(true);
-        }
-    }
-
-    initCustomElement();
 
   </script>
 </body>

@@ -78,6 +78,9 @@
     $(document).ready(function () {
         CustomElement.init((element, _context) => {
 
+            // Current value as stored in the database - before processing
+            console.log("Currently set database value is: " + element.value);
+
             // Get the JSON config
             // Example for this instance:
             /*
@@ -114,9 +117,6 @@
 
 
     function setupElement(config, value) {
-
-        // Current value as stored in the database - before processing
-        console.log("Currently set database value is: " + CustomElement.value());
 
         console.log("Element setup function. Params passed in: " + config + ", " + value);
 

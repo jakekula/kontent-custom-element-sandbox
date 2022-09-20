@@ -34,6 +34,14 @@
       height: 100%;
       opacity: 0.1;
     }
+
+    .output-table {
+        border:solid 1px #000;
+    }
+
+    .output-table td {
+        padding: 3px;
+    }
   </style>
 </head>
 <body>
@@ -43,16 +51,21 @@
     <p>The element is currently disabled!</p>
   </div>
   
-  <table>
+  <table class="output-table">
     <tr>
-        <td>JSON Configuration</td>
+        <td>JSON Configuration:</td>
         <td><span id="labelA"></span></td>
     </tr>
     <tr>
-        <td>Element value</td>
+        <td>Original text from field:</td>
         <td>
             <span id="labelB"></span>
-            <input type="hidden" id="elementValueHolder" />
+        </td>
+    </tr>
+    <tr>
+        <td>Processed text - will be saved value:</td>
+        <td>
+            <span id="labelC"></span>
         </td>
     </tr>
   </table>
@@ -127,9 +140,10 @@
             console.log("Text was not processed: " + output3);
         }
 
+        $("#labelC").text(output3);
+
         // Set the value of this custom element
         CustomElement.setValue(output3);
-
     }
 
   </script>

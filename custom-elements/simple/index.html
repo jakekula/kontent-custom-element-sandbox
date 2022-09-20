@@ -75,6 +75,9 @@
         // Set based on existing element field
         getElementValue("heading");
         var output2 = $("#element-value-holder").val();
+
+        console.log("Value at point 2: " + $("#element-value-holder").val());
+        console.log("Value at point 3: " + output2);
         
         // Set the output value
         CustomElement.setValue(output2);
@@ -87,6 +90,8 @@
         elementValue = value;
         $("#labelB").text(elementValue);
         $("#element-value-holder").text(elementValue);
+        
+        console.log("Value at point 1: " + elementValue);
       });
     }
 

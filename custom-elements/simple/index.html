@@ -65,18 +65,20 @@
     $(document).ready(function () {
         CustomElement.init((element, _context) => {
             config = element.config || {};
-            elementName = config.fieldname;
+            elementName = "heading";
 
             console.log("Congig values passed in: '" + config.capitaliseOutput + "', '" + config.message + "'");
 
             CustomElement.setHeight(150);
+
             CustomElement.getElementValue(elementName, (value) => {
-                elementValueHolder.value = value
+                elementValueHolder.value = value;
                 setupElement();
             });
+
             CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
                 CustomElement.getElementValue(elementName, (value) => {
-                    elementValueHolder.value = value
+                    elementValueHolder.value = value;
                     setupElement();
                 });
                 console.log("something changed")

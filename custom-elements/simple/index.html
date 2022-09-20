@@ -131,9 +131,9 @@
       try {
           CustomElement.init((element, _context) => {
             // Setup with initial value and disabled state
-            //setup(element.value);  
+            setup(element.value);  
             setup(element.config);
-            updateDisabled(element.disabled);
+            //updateDisabled(element.disabled);
             updateSize();
           });
           // React when the disabled state changes (e.g. when publishing the item)

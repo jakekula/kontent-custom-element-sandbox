@@ -103,6 +103,16 @@
         var output2 = value;
         $("#labelB").text(output2);
 
+        var output3 = "";
+
+        if(config.capitaliseOutput)
+        {
+            output3 = output2.toUpperCase();
+            console.log("Processed text: " + output3);
+        }
+
+
+
         //console.log("Value at point 2: " + $("#element-value-holder").val());
         //console.log("Value at point 3: " + output2);
         

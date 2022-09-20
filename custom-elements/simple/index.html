@@ -81,7 +81,7 @@
 
         // Set based on existing element field
         var output3 = CustomElement.getElementValue("heading"); //getElementValue("heading");
-        $("#labelC").text(output3);
+        //$("#labelC").text(output3);
 
         var value = output1 + " : " + output2 + " : " + output3;
         $("#labelD").text(value);
@@ -90,15 +90,15 @@
         CustomElement.setValue(value);
     }
 
+    function setLabelC(value)
+    {
+
+    }
+
     function getElementValue(codename) {
-      var elementValue = "not-set";
-
       CustomElement.getElementValue(codename, (value) => {  
-        console.log("Value is: " + value);
-        return value;
+        $("#labelC").text(output3);
       });
-
-      return "element value is: " + elementValue;
     }
 
     function updateDisabled(disabled) {

@@ -97,13 +97,11 @@
 
             CustomElement.getElementValue(elementName, (value) => {
                 console.log("Heading element value is: " + value);
-                elementValueHolder.value = value;                
                 setupElement(config, value);
             });
 
             CustomElement.observeElementChanges([elementName], (changedElementCodenames) => {
                 CustomElement.getElementValue(elementName, (value) => {
-                    elementValueHolder.value = value;
                     setupElement(config, value);
                 });
                 console.log("something changed")

@@ -47,20 +47,12 @@
   
   <table>
     <tr>
-        <td>Output A</td>
+        <td>JSON Configuration</td>
         <td><span id="labelA"></span></td>
     </tr>
     <tr>
-        <td>Output B</td>
+        <td>Element value</td>
         <td><span id="labelB"></span></td>
-    </tr>
-    <tr>
-        <td>Output C</td>
-        <td><span id="labelC"></span></td>
-    </tr>
-    <tr>
-        <td>Output D</td>
-        <td><span id="labelD"></span></td>
     </tr>
   </table>
 
@@ -69,35 +61,27 @@
   <script>
     var isDisabled = false;
 
+    var elementValue = "not set";
+
     function setup(config) {
 
-        // Set static inline value
-        var output1 = "testing 123";
-        $("#labelA").text(output1);
-
         // JSON parameter value from custom element
-        var output2 = config.capitaliseOutput + " - " + config.message;
-        $("#labelB").text(output2);
+        var output2 = "JSON config settings passed in: <ul>" + "<li>" + config.capitaliseOutput + "</li><li>" + config.message + "</li>" + "</ul>";
+        $("#labelA").text(output2);
 
         // Set based on existing element field
         getElementValue("heading");
-        //$("#labelC").text(output3);
-
-        var value = output1 + " : " + output2 + " : " + $("#labelC").Text;
-        $("#labelD").text(value);
         
         // Set the output value
-        CustomElement.setValue(value);
+        CustomElement.setValue(elementValue);
     }
 
-    function setLabelC(value)
-    {
 
-    }
 
     function getElementValue(codename) {
       CustomElement.getElementValue(codename, (value) => {  
-        $("#labelC").text(value);
+        elementValue = value;
+        $("#labelB").text(elementValue);
       });
     }
 

@@ -80,10 +80,10 @@
         $("#labelB").text(output2);
 
         // Set based on existing element field
-        var output3 = getElementValue("heading");
+        getElementValue("heading");
         //$("#labelC").text(output3);
 
-        var value = output1 + " : " + output2 + " : " + output3;
+        var value = output1 + " : " + output2 + " : " + $("#labelC").text;
         $("#labelD").text(value);
         
         // Set the output value
@@ -97,7 +97,7 @@
 
     function getElementValue(codename) {
       CustomElement.getElementValue(codename, (value) => {  
-        $("#labelC").text(output3);
+        $("#labelC").text(value);
       });
     }
 

@@ -96,12 +96,12 @@
         console.log("Element setup function. Params passed in: " + config + ", " + value);
 
         // JSON parameter value from custom element
-        //var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.message + "'";
-        //$("#labelA").text(output1);
+        var output1 = "JSON config settings passed in: '" + config.capitaliseOutput + "', '" + config.message + "'";
+        $("#labelA").text(output1);
 
         // Set based on existing element field
-        //getElementValue("heading");
-        //var output2 = $("#element-value-holder").val();
+        var output2 = value;
+        $("#labelB").text(output2);
 
         //console.log("Value at point 2: " + $("#element-value-holder").val());
         //console.log("Value at point 3: " + output2);

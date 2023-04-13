@@ -142,13 +142,13 @@
 
         if(config.capitaliseOutput)
         {
-            output3 = output2.toUpperCase();
-            console.log("Processed text: " + output3 + guid);
+            output3 = output2.toUpperCase() + '-' +  + guid;
+            console.log("Processed text: " + output3);
         }
         else
         {
-            output3 = output2;
-            console.log("Text was not processed: " + output3 + guid);
+            output3 = output2 + '-' +  + guid;
+            console.log("Text was not processed: " + output3);
         }
 
         $("#labelC").text(output3);
